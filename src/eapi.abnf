@@ -1,0 +1,30 @@
+; structural view
+eapi-name             = eapi-name-first-char 0*eapi-name-char
+eapi-name-first-char  = capital-letter / lowercase-letter / digit / underscore
+eapi-name-char        = eapi-name-first-char / plus / period / dash
+
+; ontological view
+eapi-name-categories  = eapi-cat-numeric / eapi-cat-special
+eapi-cat-numeric      = eapi-cat-issued / eapi-cat-reserved
+eapi-cat-issued       = eapi-0 / eapi-1 / eapi-2 / eapi-3 / eapi-4 / eapi-5
+eapi-cat-reserved     = eapi-6 / eapi-7 / eapi-8 / eapi-9
+eapi-cat-special      = eapi-cat-paludis-eapi
+eapi-cat-paludis-eapi = "paludis-" 0*eapi-name-char
+eapi-0                = "0"
+eapi-1                = "1"
+eapi-2                = "2"
+eapi-3                = "3"
+eapi-4                = "4"
+eapi-5                = "5"
+eapi-6                = "6"
+eapi-7                = "7"
+eapi-8                = "8"
+eapi-9                = "9"
+
+; general entities
+capital-letter       = "A" / "B" / "C" / "D" / "E" / "F" / "G" / "H" / "I" / "J" / "K" / "L" / "M" / "N" / "O" / "P" / "Q" / "R" / "S" / "T" / "U" / "V" / "W" / "X" / "Y" / "Z"
+lowercase-letter     = "a" / "b" / "c" / "d" / "e" / "f" / "g" / "h" / "i" / "j" / "k" / "l" / "m" / "n" / "o" / "p" / "q" / "r" / "s" / "t" / "u" / "v" / "w" / "x" / "y" / "z"
+digit                = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9"
+plus                 = "+"
+period               = "."
+dash                 = "-"
