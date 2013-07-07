@@ -139,7 +139,25 @@ eapi-8                      = "8"
 eapi-9                      = "9"
 
 
-; === General Reference Entities ===
+; === Version (3.2) ===
+; structural view
+version                     = version-number-part 0*1lowercase-letter 0*1version-number-suffix-part
+version-number-part         = 1*digit 0*version-number-subpart
+version-number-subpart      = dot 1*digit
+version-number-suffix-part  = version-number-suffix 0*1version-number-integer-part
+version-number-suffix       = version-number-suffix-alpha / version-number-suffix-beta / version-number-suffix-pre / version-number-suffix-rc / version-number-suffix-p
+version-number-integer-part = digit 0*1version-number-revision
+version-number-revision     = "-r" digit
+
+; specific entities
+version-number-suffix-alpha = "_alpha"
+version-number-suffix-beta  = "_beta"
+version-number-suffix-pre   = "_pre"
+version-number-suffix-rc    = "_rc"
+version-number-suffix-p     = "_p"
+
+
+s === General Reference Entities ===
 capital-letter              = "A" / "B" / "C" / "D" / "E" / "F" / "G" / "H" / "I" / "J" / "K" / "L" / "M" / "N" / "O" / "P" / "Q" / "R" / "S" / "T" / "U" / "V" / "W" / "X" / "Y" / "Z"
 lowercase-letter            = "a" / "b" / "c" / "d" / "e" / "f" / "g" / "h" / "i" / "j" / "k" / "l" / "m" / "n" / "o" / "p" / "q" / "r" / "s" / "t" / "u" / "v" / "w" / "x" / "y" / "z"
 digit                       = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9"
