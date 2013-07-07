@@ -1,4 +1,4 @@
-; (Unofficial) Gentoo Package Management Standard ABNF
+; (Unofficial) Gentoo Package Management Standard (PMS) ABNF
 ; Copyright (C) 2013  Walter Stanish
 ;
 ;  This program is free software: you can redistribute it and/or modify
@@ -13,39 +13,71 @@
 ;
 ;  You should have received a copy of the GNU General Public License
 ;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+
+; === Naming Scheme ===
+;  * Normal entities are named as follows.
+;     * Top level entities conclude with the suffix '-name'
+;     * Components of those entities generally include a further suffix,
+;       for instance '-name-first-char'
+;     * Specific, terminal entities are named uniquely.
+;  * Ontological entities are named differently.
+;     * Top level ontological categories are named using the suffix '-types'
+;       (to avoid collision with the 'category' entity within PMS).
+;     * Other ontological category names include the string '-type-'.
 
 
-; === EAPI (PMS 2.1, 2.2, 2.3, 3.1.7) ===
-
+; === EAPI (2.1, 2.2, 2.3, 3.1.7) ===
 ; structural view
-eapi-name             = eapi-name-first-char 0*eapi-name-char
-eapi-name-first-char  = capital-letter / lowercase-letter / digit / underscore
-eapi-name-char        = eapi-name-first-char / hyphen / dot / plus
+eapi-name                   = eapi-name-first-char 0*eapi-name-char
+eapi-name-first-char        = capital-letter / lowercase-letter / digit / underscore
+eapi-name-char              = eapi-name-first-char / hyphen / dot / plus
 
 ; ontological view
-eapi-name-categories  = eapi-cat-numeric / eapi-cat-special
-eapi-cat-numeric      = eapi-cat-issued / eapi-cat-reserved
-eapi-cat-issued       = eapi-0 / eapi-1 / eapi-2 / eapi-3 / eapi-4 / eapi-5
-eapi-cat-reserved     = eapi-6 / eapi-7 / eapi-8 / eapi-9
-eapi-cat-special      = eapi-cat-paludis-eapi
-eapi-cat-paludis-eapi = "paludis-" 0*eapi-name-char
-eapi-0                = "0"
-eapi-1                = "1"
-eapi-2                = "2"
-eapi-3                = "3"
-eapi-4                = "4"
-eapi-5                = "5"
-eapi-6                = "6"
-eapi-7                = "7"
-eapi-8                = "8"
-eapi-9                = "9"
+eapi-name-types             = eapi-name-type-numeric / eapi-name-type-special
+eapi-name-type-numeric      = eapi-name-type-issued / eapi-name-type-reserved
+eapi-name-type-issued       = eapi-0 / eapi-1 / eapi-2 / eapi-3 / eapi-4 / eapi-5
+eapi-name-type-reserved     = eapi-6 / eapi-7 / eapi-8 / eapi-9
+eapi-name-type-special      = eapi-name-type-paludis-eapi
+eapi-name-type-paludis-eapi = "paludis-" 0*eapi-name-char
+
+; specific entities
+eapi-0                      = "0"
+eapi-1                      = "1"
+eapi-2                      = "2"
+eapi-3                      = "3"
+eapi-4                      = "4"
+eapi-5                      = "5"
+eapi-6                      = "6"
+eapi-7                      = "7"
+eapi-8                      = "8"
+eapi-9                      = "9"
+
+
+; === Names (3.1) ===
+; ontological view
+name-types                  = category-name / package-name / slot-name
+
+
+; === Category Names (3.1.1) ===
+; structural view
+category-name               = category-name-first-char 0*category-name-char
+category-name-first-char    = capital-letter / lowercase-letter / digit / underscore
+category-name-char          = category-name-first-char / hyphen / dot / plus
+
+
+; === Package Names (3.1.2) ===
+; structural view
+package-name                = eapi-name-first-char 0*eapi-name-char
+package-name-first-char     = capital-letter / lowercase-letter / digit / underscore
+package-name-char           = eapi-name-first-char / hyphen / dot / plus
 
 
 ; === General Entities ===
-capital-letter       = "A" / "B" / "C" / "D" / "E" / "F" / "G" / "H" / "I" / "J" / "K" / "L" / "M" / "N" / "O" / "P" / "Q" / "R" / "S" / "T" / "U" / "V" / "W" / "X" / "Y" / "Z"
-lowercase-letter     = "a" / "b" / "c" / "d" / "e" / "f" / "g" / "h" / "i" / "j" / "k" / "l" / "m" / "n" / "o" / "p" / "q" / "r" / "s" / "t" / "u" / "v" / "w" / "x" / "y" / "z"
-digit                = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9"
-underscore           = "_"
-hyphen               = "-"
-dot                  = "."
-plus                 = "+"
+capital-letter              = "A" / "B" / "C" / "D" / "E" / "F" / "G" / "H" / "I" / "J" / "K" / "L" / "M" / "N" / "O" / "P" / "Q" / "R" / "S" / "T" / "U" / "V" / "W" / "X" / "Y" / "Z"
+lowercase-letter            = "a" / "b" / "c" / "d" / "e" / "f" / "g" / "h" / "i" / "j" / "k" / "l" / "m" / "n" / "o" / "p" / "q" / "r" / "s" / "t" / "u" / "v" / "w" / "x" / "y" / "z"
+digit                       = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9"
+underscore                  = "_"
+hyphen                      = "-"
+dot                         = "."
+plus                        = "+"
