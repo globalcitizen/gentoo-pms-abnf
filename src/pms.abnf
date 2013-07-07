@@ -96,9 +96,10 @@ repo-name                = repo-name-inner 0*hyphen
 repo-name-inner          = repo-name-nohyphen / repo-name-hyphen
 repo-name-char           = capital-letter / lowercase-letter / digit / underscore
 repo-name-nondigit       = capital-letter / lowercase-letter / underscore
-repo-name-nohyphen       = repo-name-nohyphen-part / 1*repo-name-nohyphen-parts
-repo-name-nohyphen-part  = 1*repo-name-char hyphen repo-name-end
-repo-name-nohyphen-parts = repo-name-nohyphen-part hyphen
+repo-name-nohyphen       = 1*repo-name-char
+repo-name-hyphen         = repo-name-hyphen-part / 1*repo-name-hyphen-parts
+repo-name-hyphen-part    = 1*repo-name-char hyphen repo-name-end
+repo-name-hyphen-parts   = repo-name-hyphen-part hyphen
 repo-name-end            = 0*repo-name-char repo-name-nondigit 0*repo-name-char
 
 
