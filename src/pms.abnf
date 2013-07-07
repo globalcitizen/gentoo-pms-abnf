@@ -130,6 +130,15 @@ repo-name-nohyphen-parts = repo-name-nohyphen-part hyphen
 repo-name-end            = 0*repo-name-char repo-name-nondigit 0*repo-name-char
 
 
+; === Slot Names (3.1.6) ===
+; structural view
+slot-name                   = slot-name-first-char 0*slot-name-char
+slot-name-first-char        = capital-letter / lowercase-letter / digit / underscore
+slot-name-char              = slot-name-first-char / hyphen
+slot-name-in-context        = slot-name-in-context-prefix slot-name
+slot-name-in-context        = tilde / hyphen
+
+
 ; === General Reference Entities ===
 capital-letter              = "A" / "B" / "C" / "D" / "E" / "F" / "G" / "H" / "I" / "J" / "K" / "L" / "M" / "N" / "O" / "P" / "Q" / "R" / "S" / "T" / "U" / "V" / "W" / "X" / "Y" / "Z"
 lowercase-letter            = "a" / "b" / "c" / "d" / "e" / "f" / "g" / "h" / "i" / "j" / "k" / "l" / "m" / "n" / "o" / "p" / "q" / "r" / "s" / "t" / "u" / "v" / "w" / "x" / "y" / "z"
@@ -140,3 +149,4 @@ dot                         = "."
 plus                        = "+"
 forward-slash               = "/"
 at-sign                     = "@"
+tilde                       = "~"
