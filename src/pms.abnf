@@ -54,9 +54,9 @@ package-name-nondigit       = capital-letter / lowercase-letter / underscore / p
 package-name-nohyphen       = package-name-first-char 0*package-name-char
 ;  - covers 'fo0-goo', 'fo0-m+o0-g00', 'f0o-6o0', 'f0o-60o' denies 'fo0-000'.
 ;    (and with the package-name entity, variants with trailing -'s)
-package-name-nohyphen       = package-name-nohyphen-part / 1*package-name-nohyphen-parts
-package-name-nohyphen-part  = package-name-first-char 0*package-name-char hyphen package-name-end
-package-name-nohyphen-parts = package-name-nohyphen-part hyphen
+package-name-hyphen         = package-name-hyphen-part / 1*package-name-hyphen-parts
+package-name-hyphen-part    = package-name-first-char 0*package-name-char hyphen package-name-end
+package-name-hyphen-parts   = package-name-hyphen-part hyphen
 ;  - special case for string following the final hyphen (must contain one nondigit char)
 package-name-end            = 0*package-name-char package-name-nondigit 0*package-name-char
 
