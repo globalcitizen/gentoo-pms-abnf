@@ -92,7 +92,27 @@ package-name-end            = 0*package-name-char package-name-nondigit 0*packag
 
 ; === Qualified Package Names (3.1.2) ===
 ; structural view
-qualified-package-name            = category-name forward-slash package-name
+qualified-package-name      = category-name forward-slash package-name
+
+
+; === Slot Names (3.1.3) ===
+; structural view
+slot-name                   = slot-name-first-char 0*slot-name-char
+slot-name-first-char        = capital-letter / lowercase-letter / digit / underscore
+slot-name-char              = slot-name-first-char / hyphen / dot / plus
+
+
+; === USE Flags (3.1.4, 11.1.1) ===
+;  We ignore the reserved case of USE_EXPAND which promotes the use of
+;  underscore, described in 11.1.1. By doing so we achieve the same goal of
+;  reservation without burdening this file with additional entity definitions
+;  that few will benefit from. (This decision is partly one of convenience
+;  and may need to be revisited.)
+;
+; structural view
+useflag-name               = useflag-name-first-char 0*useflag-name-char
+useflag-name-first-char    = capital-letter / lowercase-letter / digit
+useflag-name-char          = useflag-name-first-char / hyphen / dot / plus / at-sign
 
 
 ; === General Reference Entities ===
@@ -104,3 +124,4 @@ hyphen                      = "-"
 dot                         = "."
 plus                        = "+"
 forward-slash               = "/"
+at-sign                     = "@"
