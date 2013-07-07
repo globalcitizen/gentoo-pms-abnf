@@ -27,36 +27,9 @@
 ;     * Other ontological category names include the string '-type-'.
 
 
-; === EAPI (2.1, 2.2, 2.3, 3.1.7) ===
-; structural view
-eapi-name                   = eapi-name-first-char 0*eapi-name-char
-eapi-name-first-char        = capital-letter / lowercase-letter / digit / underscore
-eapi-name-char              = eapi-name-first-char / hyphen / dot / plus
-
-; ontological view
-eapi-name-types             = eapi-name-type-numeric / eapi-name-type-special
-eapi-name-type-numeric      = eapi-name-type-issued / eapi-name-type-reserved
-eapi-name-type-issued       = eapi-0 / eapi-1 / eapi-2 / eapi-3 / eapi-4 / eapi-5
-eapi-name-type-reserved     = eapi-6 / eapi-7 / eapi-8 / eapi-9
-eapi-name-type-special      = eapi-name-type-paludis-eapi
-eapi-name-type-paludis-eapi = "paludis-" 0*eapi-name-char
-
-; specific entities
-eapi-0                      = "0"
-eapi-1                      = "1"
-eapi-2                      = "2"
-eapi-3                      = "3"
-eapi-4                      = "4"
-eapi-5                      = "5"
-eapi-6                      = "6"
-eapi-7                      = "7"
-eapi-8                      = "8"
-eapi-9                      = "9"
-
-
 ; === Names (3.1) ===
 ; ontological view
-name-types                  = category-name / package-name / slot-name
+pms-name-types                  = category-name / package-name / slot-name / useflag-name / repo-name / keyword-name
 
 
 ; === Category Names (3.1.1) ===
@@ -130,13 +103,40 @@ repo-name-nohyphen-parts = repo-name-nohyphen-part hyphen
 repo-name-end            = 0*repo-name-char repo-name-nondigit 0*repo-name-char
 
 
-; === Slot Names (3.1.6) ===
+; === Keyword Names (3.1.6) ===
 ; structural view
-slot-name                   = slot-name-first-char 0*slot-name-char
-slot-name-first-char        = capital-letter / lowercase-letter / digit / underscore
-slot-name-char              = slot-name-first-char / hyphen
-slot-name-in-context        = slot-name-in-context-prefix slot-name
-slot-name-in-context        = tilde / hyphen
+keyword-name                = keyword-name-first-char 0*keyword-name-char
+keyword-name-first-char     = capital-letter / lowercase-letter / digit / underscore
+keyword-name-char           = keyword-name-first-char / hyphen
+keyword-name-in-context     = keyword-name-in-context-prefix keyword-name
+keyword-name-in-context     = tilde / hyphen
+
+
+; === EAPI (3.1.7, 2.1, 2.2, 2.3) ===
+; structural view
+eapi-name                   = eapi-name-first-char 0*eapi-name-char
+eapi-name-first-char        = capital-letter / lowercase-letter / digit / underscore
+eapi-name-char              = eapi-name-first-char / hyphen / dot / plus
+
+; ontological view
+eapi-name-types             = eapi-name-type-numeric / eapi-name-type-special
+eapi-name-type-numeric      = eapi-name-type-issued / eapi-name-type-reserved
+eapi-name-type-issued       = eapi-0 / eapi-1 / eapi-2 / eapi-3 / eapi-4 / eapi-5
+eapi-name-type-reserved     = eapi-6 / eapi-7 / eapi-8 / eapi-9
+eapi-name-type-special      = eapi-name-type-paludis-eapi
+eapi-name-type-paludis-eapi = "paludis-" 0*eapi-name-char
+
+; specific entities
+eapi-0                      = "0"
+eapi-1                      = "1"
+eapi-2                      = "2"
+eapi-3                      = "3"
+eapi-4                      = "4"
+eapi-5                      = "5"
+eapi-6                      = "6"
+eapi-7                      = "7"
+eapi-8                      = "8"
+eapi-9                      = "9"
 
 
 ; === General Reference Entities ===
