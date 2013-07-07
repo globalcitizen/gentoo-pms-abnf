@@ -90,15 +90,12 @@ package-name-nohyphen-parts = package-name-nohyphen-part hyphen
 package-name-end            = 0*package-name-char package-name-nondigit 0*package-name-char
 
 
-; === Package Names (3.1.2) ===
+; === Qualified Package Names (3.1.2) ===
 ; structural view
-package-name                = package-name-first-char 0*package-name-char package-name-end-string
-package-name-first-char     = capital-letter / lowercase-letter / digit / underscore / dot
-package-name-char           = package-name-first-char / hyphen / dot / plus
-package-name-end-string     = ; not a hyphen followed by one or more digits
+qualified-package-name            = category-name forward-slash package-name
 
 
-; === General Entities ===
+; === General Reference Entities ===
 capital-letter              = "A" / "B" / "C" / "D" / "E" / "F" / "G" / "H" / "I" / "J" / "K" / "L" / "M" / "N" / "O" / "P" / "Q" / "R" / "S" / "T" / "U" / "V" / "W" / "X" / "Y" / "Z"
 lowercase-letter            = "a" / "b" / "c" / "d" / "e" / "f" / "g" / "h" / "i" / "j" / "k" / "l" / "m" / "n" / "o" / "p" / "q" / "r" / "s" / "t" / "u" / "v" / "w" / "x" / "y" / "z"
 digit                       = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9"
@@ -106,3 +103,4 @@ underscore                  = "_"
 hyphen                      = "-"
 dot                         = "."
 plus                        = "+"
+forward-slash               = "/"
