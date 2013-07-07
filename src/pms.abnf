@@ -75,8 +75,6 @@ package-name                = package-name-inner 0*hyphen
 package-name-inner          = package-name-nohyphen / package-name-hyphen
 package-name-first-char     = capital-letter / lowercase-letter / digit / underscore
 package-name-char           = package-name-first-char / plus
-;  - cannot be first character
-;package-name-nondigitplus  = capital-letter / lowercase-letter / underscore
 package-name-nondigit       = capital-letter / lowercase-letter / underscore / plus
 ;  - covers 'f0o', 'fo0', 'f0o', 'f', '_', '00mf_____', '_0', '_+'.
 ;    (and with the package-name entity, variants with trailing -'s)
@@ -113,6 +111,23 @@ slot-name-char              = slot-name-first-char / hyphen / dot / plus
 useflag-name               = useflag-name-first-char 0*useflag-name-char
 useflag-name-first-char    = capital-letter / lowercase-letter / digit
 useflag-name-char          = useflag-name-first-char / hyphen / dot / plus / at-sign
+
+
+; === Repository Names (3.1.5) ===
+;  The same as 'package-name' definition, with 'plus' removed and the
+;  distinction between first and other characters collapsed.  See notes
+;  there regarding the cause of this ugliness!
+;
+; structural view
+repo-name                = repo-name-inner 0*hyphen
+repo-name-inner          = repo-name-nohyphen / repo-name-hyphen
+repo-name-char           = capital-letter / lowercase-letter / digit / underscore
+repo-name-nondigit       = capital-letter / lowercase-letter / underscore
+repo-name-nohyphen       = 1*repo-name-char
+repo-name-nohyphen       = repo-name-nohyphen-part / 1*repo-name-nohyphen-parts
+repo-name-nohyphen-part  = 1*repo-name-char hyphen repo-name-end
+repo-name-nohyphen-parts = repo-name-nohyphen-part hyphen
+repo-name-end            = 0*repo-name-char repo-name-nondigit 0*repo-name-char
 
 
 ; === General Reference Entities ===
