@@ -156,7 +156,7 @@ version-number-suffix-rc    = "_rc"
 version-number-suffix-p     = "_p"
 
 
-s === General Reference Entities ===
+; === General Reference Entities ===
 capital-letter              = "A" / "B" / "C" / "D" / "E" / "F" / "G" / "H" / "I" / "J" / "K" / "L" / "M" / "N" / "O" / "P" / "Q" / "R" / "S" / "T" / "U" / "V" / "W" / "X" / "Y" / "Z"
 lowercase-letter            = "a" / "b" / "c" / "d" / "e" / "f" / "g" / "h" / "i" / "j" / "k" / "l" / "m" / "n" / "o" / "p" / "q" / "r" / "s" / "t" / "u" / "v" / "w" / "x" / "y" / "z"
 digit                       = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9"
