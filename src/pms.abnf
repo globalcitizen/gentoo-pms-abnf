@@ -13,7 +13,7 @@
 ;
 ;  You should have received a copy of the GNU General Public License
 ;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- 
+
 
 ; === Naming Scheme ===
 ;  * Normal entities are named as follows.
@@ -35,7 +35,7 @@ pms-name-types                  = category-name / package-name / slot-name / use
 ; === Category Names (3.1.1) ===
 ; structural view
 category-name               = category-name-first-char 0*category-name-char
-category-name-first-char    = capital-letter / lowercase-letter / digit / underscore / dot
+category-name-first-char    = capital-letter / lowercase-letter / digit / underscore
 category-name-char          = category-name-first-char / hyphen / dot / plus
 
 ; === Package Names (3.1.2) ===
