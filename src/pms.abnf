@@ -62,15 +62,40 @@ name-types                  = category-name / package-name / slot-name
 ; === Category Names (3.1.1) ===
 ; structural view
 category-name               = category-name-first-char 0*category-name-char
-category-name-first-char    = capital-letter / lowercase-letter / digit / underscore
+category-name-first-char    = capital-letter / lowercase-letter / digit / underscore / dot
 category-name-char          = category-name-first-char / hyphen / dot / plus
+
+; === Package Names (3.1.2) ===
+;  This is a hack due to the look-behind assertion used in the PMS document,
+;  ie. "... must not end in a hyphen followed by one or more digits". 
+;  (Is this avoidable?)
+;
+; structural view
+package-name                = package-name-inner 0*hyphen
+package-name-inner          = package-name-nohyphen / package-name-hyphen
+package-name-first-char     = capital-letter / lowercase-letter / digit / underscore
+package-name-char           = package-name-first-char / plus
+;  - cannot be first character
+;package-name-nondigitplus  = capital-letter / lowercase-letter / underscore
+package-name-nondigit       = capital-letter / lowercase-letter / underscore / plus
+;  - covers 'f0o', 'fo0', 'f0o', 'f', '_', '00mf_____', '_0', '_+'.
+;    (and with the package-name entity, variants with trailing -'s)
+package-name-nohyphen       = package-name-first-char 0*package-name-char
+;  - covers 'fo0-goo', 'fo0-m+o0-g00', 'f0o-6o0', 'f0o-60o' denies 'fo0-000'.
+;    (and with the package-name entity, variants with trailing -'s)
+package-name-nohyphen       = package-name-nohyphen-part / 1*package-name-nohyphen-parts
+package-name-nohyphen-part  = package-name-first-char 0*package-name-char hyphen package-name-end
+package-name-nohyphen-parts = package-name-nohyphen-part hyphen
+;  - special case for string following the final hyphen (must contain one nondigit char)
+package-name-end            = 0*package-name-char package-name-nondigit 0*package-name-char
 
 
 ; === Package Names (3.1.2) ===
 ; structural view
-package-name                = eapi-name-first-char 0*eapi-name-char
-package-name-first-char     = capital-letter / lowercase-letter / digit / underscore
-package-name-char           = eapi-name-first-char / hyphen / dot / plus
+package-name                = package-name-first-char 0*package-name-char package-name-end-string
+package-name-first-char     = capital-letter / lowercase-letter / digit / underscore / dot
+package-name-char           = package-name-first-char / hyphen / dot / plus
+package-name-end-string     = ; not a hyphen followed by one or more digits
 
 
 ; === General Entities ===
