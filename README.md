@@ -33,3 +33,11 @@ approach (coupled with versioned releases) so that others
 (package manager maintainers, systems integrators, etc.) can 
 draw from a single formal specification ... removing an
 entire class of potential bugs.
+
+
+Dependencies
+------------
+
+ * `perl` is required for running tests
+ * A C compiler and `make` are required to compile the `abnfgen`
+   utility that is used to validate the ABNF grammar.

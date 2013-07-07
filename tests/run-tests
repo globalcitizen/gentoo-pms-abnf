@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+# initial setup
+chop($cwd = `pwd`);
+$abnfgen_path = $cwd . '/abnfgen';
+if(!(-e $abnfgen_path)) { compile_abnfgen(); }
+if(!(-x $abnfgen_path)) { error("abnfgen ('$abnfgen_path') is not executable!"); }
+
+# basic tests
+print "would preform basic tests here.\n";
+exit(0);
+
+sub compile_abnfgen {
+ print "NOTICE: the abnfgen tool was not found at '$abnfgen_path'. Attempting to compile...\n";
+ print "(stub)\n";
+ exit(1);
+}
+
+sub error {
+ print "ERROR: $1\n";
+ exit(1);
+}
