@@ -104,11 +104,11 @@ repo-name-end            = 0*repo-name-char repo-name-nondigit 0*repo-name-char
 
 ; === Keyword Names (3.1.6) ===
 ; structural view
-keyword-name                = keyword-name-first-char 0*keyword-name-char
-keyword-name-first-char     = capital-letter / lowercase-letter / digit / underscore
-keyword-name-char           = keyword-name-first-char / hyphen
-keyword-name-in-context     = keyword-name-in-context-prefix keyword-name
-keyword-name-in-context     = tilde / hyphen
+keyword-name                   = keyword-name-first-char 0*keyword-name-char
+keyword-name-first-char        = capital-letter / lowercase-letter / digit / underscore
+keyword-name-char              = keyword-name-first-char / hyphen
+keyword-name-in-context        = keyword-name-in-context-prefix keyword-name
+keyword-name-in-context-prefix = tilde / hyphen
 
 
 ; === EAPI (3.1.7, 2.1, 2.2, 2.3) ===
