@@ -24,20 +24,27 @@ Goal
 ----
 The idea is to generate useful code from the specifications
 such that other platforms and systems can easily validate and
-verify what is 'supposed' to be happening.  At the base level,
-this would include things like generating regular expressions
-for a given entity. At a higher level, this would include
-things like generating IETF standard ABNF, parser generator
-input, etc. Ideally, we might get some acceptance of this 
+verify what is 'supposed' to be happening without having to
+read a human-language technical document.
+
+So far, we can generate regular expressions for a given entity
+as well as generate test cases.
+
+We also need to generate IETF standard ABNF, which will fix
+the remaining bugs in the regex generation.  This is only
+a question of converting strings to hex-encoded entities.
+
+Ideally, we might get some acceptance of this 
 approach (coupled with versioned releases) so that others
 (package manager maintainers, systems integrators, etc.) can 
 draw from a single formal specification ... removing an
-entire class of potential bugs.
+entire class of potential bugs in every single package
+related tool.
 
 
 Dependencies
 ------------
 
- * `perl` is required for running tests
+ * `perl` and `ruby` are required for running some tests
  * A C compiler and `make` are required to compile the `abnfgen`
    utility that is used to validate the ABNF grammar.
