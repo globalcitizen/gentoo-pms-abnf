@@ -1,6 +1,12 @@
 Tests
 =====
 
+ generate-regular-expressions:
+  Example script utilizing the `abnf` ruby module from 
+  http://www.a-k-r.org/abnf/ and https://github.com/akr/abnf that converts
+  ABNF formal definitions to regular expressions ("so now you have two
+  problems!").
+
  generate-sample-test-data:
   Example script utilizing the `abnfgen` C utility to automatically create
   test data for each entity defined within the ABNF (including ontological
